@@ -10,9 +10,8 @@ RUN usermod -u 1000 atlas
 RUN find /home -user 500 -type f -exec chown -h atlas '{}' \;
 
 USER atlas
-#RUN source ~/release_setup.sh && pip install -U jupyter --user
+RUN source ~/release_setup.sh && pip install -U pip install metakernel zmq  --user
+RUN source ~/release_setup.sh  && cp -r $ROOTSYS/etc/notebook/kernels/root ~/.local/share/jupyter/kernels
 RUN echo 'export PATH=$PATH:$HOME/.local/bin' >> /home/atlas/setup.sh
-RUN mkdir -p ~/.local/share/jupyter/kernels
-RUN source /home/atlas/release_setup.sh && cp -r $ROOTSYS/etc/notebook/kernels/root ~/.local/share/jupyter/kernels
 
 ENTRYPOINT ["/entrypoint.sh"]
