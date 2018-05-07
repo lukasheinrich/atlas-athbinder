@@ -13,7 +13,7 @@ USER atlas
 RUN whoami; id
 RUN sudo chown -R atlas:wheel /home/atlas
 RUN ls -lrt ~/release_setup.sh
-RUN source ~/release_setup.sh && whoami && id && ls -lrta \
+RUN source ~/release_setup.sh && whoami && id && ls -lrta && \
     pip install -U  metakernel zmq  --user  && \
     cp -r $ROOTSYS/etc/notebook/kernels/root ~/.local/share/jupyter/kernels
 RUN echo 'export PATH=$PATH:$HOME/.local/bin' >> /home/atlas/setup.sh
