@@ -11,7 +11,7 @@ RUN find /home -user 500 -type f -exec chown -h atlas '{}' \;
 
 USER atlas
 RUN source ~/release_setup.sh && \
-    pip install -U pip install metakernel zmq  --user  && \
+    pip install -U  metakernel zmq  --user  && \
     cp -r $ROOTSYS/etc/notebook/kernels/root ~/.local/share/jupyter/kernels
 RUN echo 'export PATH=$PATH:$HOME/.local/bin' >> /home/atlas/setup.sh
 
