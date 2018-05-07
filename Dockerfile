@@ -10,6 +10,9 @@ RUN usermod -u 1000 atlas
 RUN find /home -user 500 -type f -exec chown -h atlas '{}' \;
 
 USER atlas
+RUN whoami; id
+RUN sudo chown -R atlas /home/atlas
+RUN ls -lrt ~/release_setup.sh
 RUN source ~/release_setup.sh && \
     pip install -U  metakernel zmq  --user  && \
     cp -r $ROOTSYS/etc/notebook/kernels/root ~/.local/share/jupyter/kernels
